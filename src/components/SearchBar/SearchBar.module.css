@@ -1,0 +1,31 @@
+.main_container {
+  margin-top: 32px;
+  border-radius: 24px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  height: 62px;
+  width: 664px;
+}
+
+.input {
+  background: none;
+  border: none;
+  padding: 16px;
+  margin: 0;
+  font: inherit;
+  color: #000000;
+  outline: none;
+}
+
+.button {
+  width: 150px;
+  background-color: #d6f379;
+  border: none;
+  border-radius: 30px;
+  color: #000000;
+  cursor: pointer;
+  font: inherit;
+  padding: 16px;
+  margin: 8px;
+}
