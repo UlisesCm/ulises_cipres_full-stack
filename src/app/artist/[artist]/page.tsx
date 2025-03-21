@@ -1,8 +1,8 @@
 "use client";
-import { Album } from "@/components/Album/Album";
 import { Banner } from "@/components/Banner/Banner";
 import { useParams } from "next/navigation";
 import styles from "./Artist.module.css";
+import { AlbumList } from "@/components/AlbumList/AlbumList";
 
 export default function Page() {
   const params = useParams();
@@ -11,11 +11,7 @@ export default function Page() {
     <div className={styles.main_container}>
       <Banner artist={params.artist} />
       <p>Guarda tus álbumes favoritos de {params.artist}</p>
-      <div className={styles.albums_container}>
-        {[...Array(10)].map((_, i) => (
-          <Album key={i} />
-        ))}
-      </div>
+      <AlbumList albums={[1, 2, 3, 4, 5]} />
     </div>
   );
 }
