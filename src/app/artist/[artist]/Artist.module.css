@@ -1,0 +1,21 @@
+.main_container {
+  background-color: #222222;
+  padding: 24px 120px;
+  @media screen and (max-width: 1080px) {
+    padding: 24px 32px;
+  }
+}
+
+.albums_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 32px;
+  padding: 16px;
+
+  @media screen and (max-width: 1080px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}

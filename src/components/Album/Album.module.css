@@ -1,0 +1,18 @@
+.button {
+  width: 184px;
+  height: 44px;
+  border-radius: 24px;
+  text-align: start;
+  padding: 0 16px;
+  border: none;
+}
+
+.button_add {
+  background: #d6f379;
+  color: #000;
+}
+
+.button_remove {
+  background: #e3513d;
+  color: #fff;
+}

@@ -2,15 +2,21 @@ import Image from "next/image";
 import styles from "./Card.module.css";
 
 interface CardProps {
+  children?: React.ReactNode;
   selected?: boolean;
+  customClassName?: string;
 }
 
-export const Card = ({ selected = false }: CardProps) => {
+export const Card = ({
+  children,
+  customClassName,
+  selected = false,
+}: CardProps) => {
   return (
     <div
       className={`${styles.main_container} ${
         selected ? styles.container_selected : ""
-      }`}
+      } ${customClassName}`}
     >
       <Image
         src="/images/portada-test.svg"
@@ -28,6 +34,7 @@ export const Card = ({ selected = false }: CardProps) => {
       >
         followers: n
       </p>
+      {children}
     </div>
   );
 };

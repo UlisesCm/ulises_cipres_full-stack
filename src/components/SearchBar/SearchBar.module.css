@@ -6,6 +6,9 @@
   justify-content: space-between;
   height: 62px;
   width: 664px;
+  @media screen and (max-width: 1080px) {
+    width: 90%;
+  }
 }
 
 .input {
