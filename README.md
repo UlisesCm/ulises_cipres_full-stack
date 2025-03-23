@@ -24,8 +24,8 @@ Este proyecto es una aplicación web que permite a los usuarios buscar artistas 
 1. Clona el repositorio:
 
 ```bash
-git clone https://github.com/tu-usuario/spotify-app-frontend.git
-cd spotify-app-frontend
+git clone https://github.com/UlisesCm/ulises_cipres_full-stack.git
+cd ulises_cipres_full-stack.git
 ```
 
 npm install
