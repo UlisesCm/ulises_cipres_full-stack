@@ -35,7 +35,6 @@ export default function SearchPage() {
           offset: pagination.offset,
         },
       });
-      console.log(data);
       setArtists(data.artists.items);
       setPagination({
         ...pagination,
