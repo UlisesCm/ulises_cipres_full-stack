@@ -24,3 +24,7 @@
   align-items: center;
   gap: 16px;
 }
+
+.image_container img {
+  border-radius: 50%;
+}

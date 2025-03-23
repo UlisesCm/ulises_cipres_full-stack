@@ -1,6 +1,5 @@
 .main_container {
   width: 320px;
-  height: 410px;
   border-radius: 24px;
   padding: 24px;
   display: grid;
@@ -20,10 +19,11 @@
   gap: 12px;
 }
 
-.container_selected {
+.main_container:hover {
   background-color: #d6f379;
+  color: #000;
 }
 
-.text_selected {
-  color: #000000;
+.image_container {
+  color: gray;
 }

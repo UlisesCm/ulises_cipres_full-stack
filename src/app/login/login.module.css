@@ -1,5 +1,4 @@
 .main_container {
-  height: 100vh;
   width: 100%;
   overflow: hidden;
   padding: 235px 236px;
@@ -27,6 +26,7 @@
     height: 318px;
     justify-content: start;
   }
+
   @media screen and (max-width: 768px) {
     width: 222px;
     height: 222px;

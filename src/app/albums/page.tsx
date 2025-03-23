@@ -13,7 +13,7 @@ export default function page() {
         Disfruta de tu música a un solo click y descubre que discos has guardado
         dentro de “mis álbumes”
       </p>
-      <AlbumList albums={[1, 2, 3, 4, 5]} />
+      <AlbumList />
     </div>
   );
 }

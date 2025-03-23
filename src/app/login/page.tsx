@@ -1,9 +1,45 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import styles from "./login.module.css";
+import { AuthContext } from "@/context/AuthContext";
+
 export default function page() {
   const VECTOR_SRC = "/images/vector.svg";
   const RIGHT_ARROW_SRC = "/icons/arrow-right.svg";
+  const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
+  const AUTH_URI = process.env.NEXT_PUBLIC_SPOTIFY_AUTH_URI;
+  const REDIRECT_URI = process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI;
+
+  const LoginURL = `${AUTH_URI}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=token`;
+
+  const { setToken } = useContext(AuthContext);
+
+  useEffect(() => {
+    console.log("useEffect");
+    const hash = window.location.hash;
+    let localToken = window.localStorage.getItem("token");
+    if (hash) {
+      const tokenFragment = hash
+        .substring(1)
+        .split("&")
+        .find((elem) => elem.startsWith("access_token"));
+      if (tokenFragment) {
+        localToken = tokenFragment.split("=")[1];
+        console.log("localToken", localToken);
+      }
+
+      window.location.hash = "";
+      console.log("localToken", localToken);
+      if (localToken) window.localStorage.setItem("token", localToken);
+    }
+
+    if (localToken) {
+      console.log("Setting token", localToken);
+      setToken(localToken);
+    }
+  }, []);
+
   return (
     <div>
       <div className={styles.main_container}>
@@ -27,10 +63,10 @@ export default function page() {
             <br />
             albumes favoritos.
           </p>
-          <button className={styles.cta}>
+          <a className={styles.cta} href={LoginURL}>
             <p>Log in con Spotify</p>
             <Image src={RIGHT_ARROW_SRC} width={24} height={24} alt="spotify" />
-          </button>
+          </a>
         </div>
       </div>
     </div>
