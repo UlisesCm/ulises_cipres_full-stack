@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useContext, useEffect } from "react";
 import styles from "./login.module.css";
 import { AuthContext } from "@/context/AuthContext";
+import { redirect } from "next/navigation";
 
 export default function LoginPage() {
   const VECTOR_SRC = "/images/vector.svg";
@@ -13,7 +14,7 @@ export default function LoginPage() {
 
   const LoginURL = `${AUTH_URI}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=token`;
 
-  const { setToken } = useContext(AuthContext);
+  const { token, setToken } = useContext(AuthContext);
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -28,13 +29,17 @@ export default function LoginPage() {
       }
 
       window.location.hash = "";
-      if (localToken) window.localStorage.setItem("token", localToken);
+      if (localToken) {
+        setToken(localToken);
+        window.localStorage.setItem("token", localToken);
+        redirect("/search");
+      }
     }
 
     if (localToken) {
       setToken(localToken);
     }
-  }, [setToken]);
+  }, [token, setToken]);
 
   return (
     <div>
