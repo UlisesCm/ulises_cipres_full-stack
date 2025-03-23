@@ -16,32 +16,32 @@ export const AlbumList = ({ artistId }: AlbumListProps) => {
   const [albums, setAlbums] = useState<AlbumInterface[]>([]);
   const pathname = usePathname();
 
-  const fetchAlbums = async () => {
-    try {
-      const response = await axios.get(
-        `https://api.spotify.com/v1/artists/${artistId}/albums`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
+  useEffect(() => {
+    const fetchAlbums = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.spotify.com/v1/artists/${artistId}/albums`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           },
-        },
-      );
-      setAlbums(response.data.items);
-    } catch (error) {
-      console.error("Error fetching artist:", error);
-      if (axios.isAxiosError(error)) {
-        console.error("Axios error message:", error.message);
-        if (error.response) {
-          if (error.response.status === 401) {
-            console.error("Unauthorized request");
-            redirect("/login");
+        );
+        setAlbums(response.data.items);
+      } catch (error) {
+        console.error("Error fetching artist:", error);
+        if (axios.isAxiosError(error)) {
+          console.error("Axios error message:", error.message);
+          if (error.response) {
+            if (error.response.status === 401) {
+              console.error("Unauthorized request");
+              redirect("/login");
+            }
           }
         }
       }
-    }
-  };
+    };
 
-  useEffect(() => {
     if (artistId && token) {
       fetchAlbums();
     }
@@ -51,7 +51,7 @@ export const AlbumList = ({ artistId }: AlbumListProps) => {
     if (pathname === "/albums" && saveAlbums) {
       setAlbums(saveAlbums);
     }
-  }, [saveAlbums]);
+  }, [saveAlbums, pathname]);
 
   return (
     <div className={styles.albums_container}>

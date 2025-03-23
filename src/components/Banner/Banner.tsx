@@ -27,7 +27,7 @@ export const Banner = ({ artist }: BannerProps) => {
           <Image src={VERIFIED_SRC} width={24} height={24} alt="verified" />
           <p>Artista certificado</p>
         </div>
-        <h1>{name}</h1>
+        <h1 className={styles.title}>{name}</h1>
         <p>Followers: {followersTotal}</p>
         <p>popularidad: {popularity}</p>
       </div>

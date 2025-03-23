@@ -19,7 +19,7 @@ interface AuthContextProps {
 
 export const AuthContext = createContext<AuthContextProps>({
   token: "",
-  setToken: (token: string) => {},
+  setToken: () => {},
   logout: () => {},
   saveAlbums: [],
   setSaveAlbums: ([]) => {},

@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Card } from "../Card/Card";
 import styles from "./Album.module.css";
 import { AuthContext } from "@/context/AuthContext";

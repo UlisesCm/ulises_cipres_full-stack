@@ -4,7 +4,7 @@ import React, { useContext, useEffect } from "react";
 import styles from "./login.module.css";
 import { AuthContext } from "@/context/AuthContext";
 
-export default function page() {
+export default function LoginPage() {
   const VECTOR_SRC = "/images/vector.svg";
   const RIGHT_ARROW_SRC = "/icons/arrow-right.svg";
   const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
@@ -16,7 +16,6 @@ export default function page() {
   const { setToken } = useContext(AuthContext);
 
   useEffect(() => {
-    console.log("useEffect");
     const hash = window.location.hash;
     let localToken = window.localStorage.getItem("token");
     if (hash) {
@@ -26,19 +25,16 @@ export default function page() {
         .find((elem) => elem.startsWith("access_token"));
       if (tokenFragment) {
         localToken = tokenFragment.split("=")[1];
-        console.log("localToken", localToken);
       }
 
       window.location.hash = "";
-      console.log("localToken", localToken);
       if (localToken) window.localStorage.setItem("token", localToken);
     }
 
     if (localToken) {
-      console.log("Setting token", localToken);
       setToken(localToken);
     }
-  }, []);
+  }, [setToken]);
 
   return (
     <div>

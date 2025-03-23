@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Card } from "@/components/Card/Card";
 import styles from "./search.module.css";
 import { SearchBar } from "@/components/SearchBar/SearchBar";
@@ -8,7 +9,7 @@ import { AuthContext } from "@/context/AuthContext";
 import { Pagination } from "@/components/Pagination/Pagination";
 import { redirect } from "next/navigation";
 
-export default function page() {
+export default function SearchPage() {
   const [searchKey, setSearchKey] = useState("");
   const [artists, setArtists] = useState([]);
   const [pagination, setPagination] = useState({
